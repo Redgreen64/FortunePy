@@ -3,7 +3,7 @@
 ## Use this as a base for your own hosted repo.
 
 # --- CONFIGURATION ---
-URL="https://raw.githubusercontent.com/YOUR_USERNAME/fortunepy/main/fortunepy.py" 
+URL="https://raw.githubusercontent.com/YOUR_USERNAME/fortunepy/main/" # OR https://your_domain.com/path/to/fortunepyandpytypewriter/
 HOSTER="Your Name/Nickname" 
 HasLoadingThing=1 # 0: verbose, 1: progress bar, 2: both
 
@@ -11,11 +11,12 @@ HasLoadingThing=1 # 0: verbose, 1: progress bar, 2: both
 if command -v figlet >/dev/null 2>&1; then
     figlet "FORTUNEPY"
 else
-    echo "==============================="
-    echo "      FORTUNEPY INSTALLER      "
-    echo "==============================="
+    echo "================================================"
+    echo "      FORTUNEPY AND PYTYPEWRITER INSTALLER      "
+    echo "================================================"
 fi
 
+echo "-------------------------------------------------------"
 echo "Written in bash by the module creator himself (Stormy)"
 echo "Hosted by: $HOSTER"
 echo "-------------------------------------------------------"
@@ -37,7 +38,7 @@ USER_SITE_PACKAGES=$(python3 -m site --user-site)
 mkdir -p "$USER_SITE_PACKAGES"
 
 # --- DOWNLOAD LOGIC ---
-echo "Downloading fortunepy.py..."
+echo "Downloading FortunePy..."
 
 if [ "$HasLoadingThing" -eq 1 ]; then
     curl -L "$URL" -o "fortunepy.py" --progress-bar
@@ -54,10 +55,29 @@ if [ -f "fortunepy.py" ]; then
     
     # Move the file so it can be imported from ANYWHERE
     mv fortunepy.py "$USER_SITE_PACKAGES/"
+
+# --- DOWNLOAD LOGIC ---
+echo "Downloading PyTypewriter..."
+
+if [ "$HasLoadingThing" -eq 1 ]; then
+    curl -L "$URL" -o "PyTypewriter.py" --progress-bar
+elif [ "$HasLoadingThing" -eq 0 ]; then
+    curl -L "$URL" -o "PyTypewriter.py"
+else
+    echo "Fetching from $URL..."
+    curl -L "$URL" -o "PyTypewriter.py" --progress-bar
+fi
+
+# --- THE AUTO-MOVE ---
+if [ -f "PyTypewriter.py" ]; then
+    echo "Installing to $USER_SITE_PACKAGES..."
+    
+    # Move the file so it can be imported from ANYWHERE
+    mv fortunepy.py "$USER_SITE_PACKAGES/"
     
     if [ $? -eq 0 ]; then
         echo "-------------------------------------------------------"
-        echo "SUCCESS: FortunePy is now global."
+        echo "SUCCESS: FortunePy and PyTypewriter is now global."
         echo "You can now use 'import fortunepy' in any Python script."
         echo "-------------------------------------------------------"
         python3 -c "import fortunepy; print('Test: Installation verified.')"
@@ -65,6 +85,6 @@ if [ -f "fortunepy.py" ]; then
         echo "MOVE FAILED: Check your permissions. Maybe your system is locked down?"
     fi
 else
-    echo "DOWNLOAD FAILED: The file never arrived. Check your URL."
+    echo "DOWNLOAD FAILED: The file never arrived. Report this to the host or their fourms (if they have an Issues channel)."
     exit 1
 fi
