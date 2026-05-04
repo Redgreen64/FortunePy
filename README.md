@@ -27,7 +27,7 @@ To use the full power of FortunePy, you'll need:
 Run the installer script to download and move `fortunepy` to your Python `site-packages` automatically. This makes the module available globally.
 
 ```bash
-curl -sSL https://raw.githubusercontent.com/YOUR_USERNAME/fortunepy/main/install_fortunepy.sh | bash
+curl -sSL https://raw.githubusercontent.com/YOUR_USERNAME/fortunepy/main/install.sh | bash
 ```
 
 ### The Manual Way
