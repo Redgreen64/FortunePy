@@ -34,8 +34,8 @@ curl -sSL https://raw.githubusercontent.com/YOUR_USERNAME/fortunepy/main/install
 If you don't trust scripts, just drop `fortunepy.py` into your project directory. 
 *Note: If you do this, you can only import it from that specific folder.*
 
-## 🏗️ How to Build `fortunepy` (The "Stupid Idea" Section)
-Right now, this is a pure Python module. You don't "build" it—you just run it. If you're looking for a `Makefile`, you're trying too hard.
+## 🏗️ How to Build `fortunepy` 
+Right now, this is a pure Python module. You don't "build" it, you just run it. If you're looking for a `Makefile`, you're trying too hard.
 
 **Why is this section here?**
 Because if I ever decide to rewrite this in C or C++ (for "speed" or just to flex), this is where the `gcc` instructions will go. For now, building consists of opening your eyes and checking if the file exists.
