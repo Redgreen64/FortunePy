@@ -1,5 +1,5 @@
 #PyTypewriter -- A Typewriter-esk python module
-import sys,time,os #Import Both.
+import sys,time,os #Import All 3.
 
 DashThing = "-" * 50
 
@@ -18,4 +18,5 @@ if __name__ == "__main__":
     print("\n Bundles with FortunePy!")
     print("\n")
     for line in USAGE_TABLE:
-        typew(f"{line} \n",0.025)
+        typew(f"""{DashThing}
+        \n {line} \n""",0.025)
